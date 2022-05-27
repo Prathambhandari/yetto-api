@@ -4,6 +4,10 @@ void main() {
   runApp(MaterialApp(
     title: 'Awesome app',
     home: HomePage(),
+    theme: ThemeData(
+      primarySwatch: Colors.purple,
+    ),
+    debugShowCheckedModeBanner: false,
   ));
 }
 
@@ -17,37 +21,39 @@ class HomePage extends StatelessWidget {
         title: Text('Awesome app'),
         elevation: 0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          color: Colors.black,
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                padding: EdgeInsets.all(8),
-                width: 100,
-                height: 100,
-                color: Colors.green,
+      body: Container(),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            // DrawerHeader(
+            //   child: Text(
+            //     'hi drawer',
+            //     style: TextStyle(color: Colors.white),
+            //   ),
+            //   decoration: BoxDecoration(
+            //     color: Colors.purpleAccent,
+            //   ),
+
+            // ),
+            UserAccountsDrawerHeader(
+              accountName: Text('Pratham'),
+              accountEmail: Text('pratham@gmail.com'),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: NetworkImage('http://surl.li/cbmjg'),
               ),
-              Container(
-                padding: EdgeInsets.all(8),
-                width: 100,
-                height: 100,
-                color: Colors.yellow,
-              ),
-              Container(
-                padding: EdgeInsets.all(8),
-                width: 100,
-                height: 100,
-                color: Colors.red,
-              ),
-            ],
-          ),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Account'),
+              trailing: Icon(Icons.edit),
+            ),
+          ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.edit),
       ),
     );
   }
